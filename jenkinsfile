@@ -43,7 +43,6 @@ spec:
                 echo "export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:\$HADOOP_PREFIX/lib/native:\$JAVA_HOME/jre/lib/amd64/server" >> /root/.bashrc
                 echo "export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/usr/local/cuda-9.2/lib64" >> /root/.bashrc
                 echo "export PATH=\$PATH:/usr/local/cuda-9.2/bin" >> /root/.bashrc
-                source /root/.bashrc
                 """
             }
         }
@@ -51,6 +50,7 @@ spec:
             container("mxnet"){
                 sh """
                 cd /home/jenkins/workspace/incubator-mxnet
+				source /root/.bashrc
                 make -j8
                 """
             }
